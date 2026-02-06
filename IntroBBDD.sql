@@ -29,20 +29,20 @@ WHERE passenger_name LIKE '%IRINA%';
 
 -- 6. Mostrar las ciudades con más de un aeropuerto.
 
-SELECT city, COUNT(*)
+SELECT city, COUNT(*) AS airports
 FROM airports_data
 GROUP BY city HAVING COUNT(*) > 1;
 
 -- 7. Mostrar el número de vuelos por modelo de avión.
 
-SELECT aircrafts_data.model, COUNT(*) AS flights_amount
+SELECT aircrafts_data.model, COUNT(*) AS flights
 FROM flights
 JOIN aircrafts_data ON flights.aircraft_code = aircrafts_data.aircraft_code
 GROUP BY aircrafts_data.model;
 
 -- 8. Reservas con más de un billete (varios pasajeros).
 
-SELECT book_ref, COUNT(*)
+SELECT book_ref, COUNT(*) AS passengers
 FROM tickets
 GROUP BY book_ref HAVING COUNT(*) > 1; 
 
